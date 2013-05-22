@@ -1,0 +1,23 @@
+<h1>Listing cues</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cues.each do |cue| %>
+  <tr>
+    <td><%= cue.name %></td>
+    <td><%= link_to 'Show', cue %></td>
+    <td><%= link_to 'Edit', edit_cue_path(cue) %></td>
+    <td><%= link_to 'Destroy', cue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cue', new_cue_path %>
