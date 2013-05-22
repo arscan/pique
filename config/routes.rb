@@ -1,5 +1,10 @@
 Pique::Application.routes.draw do
+
+  match ':id' => 'cues#show'
+  resources :items
   resources :cues
+
+  root to: 'cues#index'
 
 
   # The priority is based upon order of creation:
