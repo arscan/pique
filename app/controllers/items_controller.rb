@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
+    @cue = Cue.find(params[:cue_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,11 +42,13 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
+    @cue = Cue.find(params[:cue_id])
+    @item.cue = @cue
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
+        format.html { redirect_to [@cue,@item], notice: 'Item was successfully created.' }
+        format.json { render json: [@cue,@item], status: :created, location: @item }
       else
         format.html { render action: "new" }
         format.json { render json: @item.errors, status: :unprocessable_entity }

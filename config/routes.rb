@@ -1,8 +1,10 @@
 Pique::Application.routes.draw do
 
+  resources :cues, path: "/" do
+    resources :items
+  end
   match ':id' => 'cues#show'
-  resources :items
-  resources :cues
+  #match ':cue_id/new' => 'items#new'
 
   root to: 'cues#index'
 

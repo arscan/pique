@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522013230) do
+ActiveRecord::Schema.define(:version => 20130523204637) do
 
   create_table "cues", :id => false, :force => true do |t|
     t.uuid     "id",         :null => false
@@ -23,12 +23,10 @@ ActiveRecord::Schema.define(:version => 20130522013230) do
   add_index "cues", ["id"], :name => "index_cues_on_id"
 
   create_table "items", :force => true do |t|
-    t.string   "body"
-    t.integer  "cue_id"
+    t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.uuid     "cue_id"
   end
-
-  add_index "items", ["cue_id"], :name => "index_items_on_cue_id"
 
 end
