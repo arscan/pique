@@ -43,9 +43,13 @@ post '/:queue' do
     return
   end
 
+
   if request.content_type == 'application/x-www-form-urlencoded'
-    REDIS.rpush(params[:queue], params[:post][:body])
+    puts request.content_type
+
+    REDIS.rpush(params[:queue], params[:body])
   else
+    puts request.content_type
     REDIS.lpop(params[:queue])
   end
 
